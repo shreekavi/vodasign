@@ -1,0 +1,14 @@
+<h2> Past Meetings</h2>
+<% if @events.empty? %>
+	<p> There are no past meetings available </p>
+<% else %>
+	<% @events.each do |e| -%>
+		<p><%= e.start_time %></p>
+		<p><%= e.description %></p>
+
+	<% end -%>
+<% end %>
+
+	<br />
+	<%= @time %>
+

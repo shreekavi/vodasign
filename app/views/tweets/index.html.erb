@@ -1,0 +1,21 @@
+
+	 <%= javascript_include_tag :juggernaut %>
+	 <%= juggernaut :debug=> false %>
+
+
+<h3>Past Messages</h3> <%= link_to 'New Message', '/tweets/new', :class=>'menu_button' %>
+<hr/>
+
+
+<% @tweets.each do |tweet| %>
+    <%= tweet.message %> @ <%= tweet.created_at.to_s(:short) %>
+
+    <br />
+
+    <hr class="message_spacer" />
+<% end %>
+
+ <%= will_paginate @tweets %>
+<br />
+
+

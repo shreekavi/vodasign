@@ -1,0 +1,10 @@
+<% form_remote_tag :url => {:action => :send_data }, :complete => "$('message').value = ''", :remote=>true   do %>
+        <%= text_area_tag( 'message', '', {:rows => 10, :cols => 50, :id => 'message'} ) %>
+        <br />
+        <table><tr><td>
+        <%= submit_tag "Send Message", :class=>"message_button" %></td>
+        <td><span class="menu_button"><%= link_to 'Show Past Messages', :action=>'index' %></span></td>
+        </tr>
+        </table>
+      <% end  %>
+     
