@@ -6,80 +6,18 @@ body { font-family: 'Arial'}
 .span-24 { width: 950px; }
 .last { margin-right: 0; }
 .span-8 { width: 310px; }
-
+table { border: 1px solid #ccc;}
+td {border: 1px solid #ccc;}
 </style>
 
 
 
 
 <div class='container'> 
-  <div class='column span-16'> 
-	<!-- Current Meeting Partial -->
-	<%= periodically_call_remote(
- 		:url => { :action => 'current_meeting' },
-		:frequency => '60',
-	    	:update => { :success => "current_meeting", :failure => "error" }) 
-	 %>
-	 <div id="current_meeting">
-	 	<%= render :partial => 'current_meeting' %>
-	 </div>
-	 <div id = "rest_of_today">
-	 <h2>Rest of the meetings today </h2>
-
-            <%= render :partial => "rest_of_today" %>
-         </div>
-
-  </div> 
-  <div class='column last span-8'> 
-	<!-- Future Meetings Partial -->
-	<%= periodically_call_remote(
- 		:url => { :action => 'future_meetings' },
-		:frequency => '60',
-	    	:update => { :success => "future_meetings", :failure => "error" }) 
-	 %>
-
-	<div id="future_meetings">
-	 	<%= render :partial => 'future_meetings' , :url=>{:action=> 'future_meetings'}%>
-	</div>
-
-	<hr />
-	<!-- Past Meetings Partial -->
-	<%= periodically_call_remote(
- 		:url => { :action => 'past_meetings' },
-		:frequency => '60',
-	    	:update => { :success => "past_meetings", :failure => "error" }) 
-	 %>
-	<div id="past_meetings">
-	 	<%= render :partial => 'past_meetings' %>
-	</div>
-  </div> 
-<hr />
-</div> 
-
-
-<div class='container'>
-<div class='column span-24'>
-<!--
-<% @events.each do |event| -%>
-	<b><i>Start Time </i></b><br/>
-	<%= event.start_time.strftime("%d-%m-%Y %H:%M") %><br />
-	<b><i>End Time </i></b><br/>
-	<%= event.end_time.strftime("%d-%m-%Y %H:%M")%> <br/>
-	<b><i>Description </i></b><br/>
-	<%= event.description %><br />
-	<b><i>Summary</i></b><br/>
-	<%= event.summary %><br />
-	<hr />
-<% end -%>
-
--->
-</div>
+Current time is <%= @current_time %>
+<div id = "calendar">
+	<%= render :partial => "shift" , :current_shift=> @current_shift %>
 </div>
 
-<div class='container'>
-	<div class='column span-24'>
-		
-
-	</div>
 </div>
 

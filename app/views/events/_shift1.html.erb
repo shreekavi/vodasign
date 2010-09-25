@@ -1,0 +1,17 @@
+
+<table width="50%">
+<% (0..@shift1.size-1).each do |s| %>
+	<tr>
+	<% if @start_times.rindex {|e| e == @shift1[s]} -%>
+		<td bgcolor='green'><%= @shift1[s] %> <%= @subjects[@start_times.rindex {|e| e == @shift1[s]}] %></td>
+	<% elsif @end_times.rindex {|e| e == @shift1[s+1]} %>
+		<td bgcolor='green'><%= @shift1[s] %></td>
+	<% else -%>
+		<td><%= @shift1[s] %></td>
+	<% end -%>
+	</tr>
+<% end -%>
+</table>
+
+
+
