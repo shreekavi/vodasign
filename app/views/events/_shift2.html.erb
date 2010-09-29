@@ -1,8 +1,9 @@
-<table width="50%">
+
+<table width="30%">
 <% (0..@shift2.size-1).each do |s| %>
 	<tr>
 	<% if @start_times.rindex {|e| e == @shift2[s]} -%>
-		<td bgcolor='green'><%= @shift2[s] %></td>
+		<td bgcolor='green'><%= @shift2[s] %> <%= @subjects[@start_times.rindex {|e| e == @shift2[s]}] %></td>
 	<% elsif @end_times.rindex {|e| e == @shift2[s+1]} %>
 		<td bgcolor='green'><%= @shift2[s] %></td>
 	<% else -%>
@@ -11,4 +12,6 @@
 	</tr>
 <% end -%>
 </table>
+
+
 
