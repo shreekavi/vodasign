@@ -14,14 +14,20 @@
       <h1>[ Corporate Logo ]</h1> 
   </div> 
   <div class='column last span-8'> 
-  	
+  	<% if !current_user %>
+	  <%= link_to "Register", new_account_path %> |
+	  <%= link_to "Log In", new_user_session_path %> |
+	<% else %>
+	  <%= link_to "My Account", account_path %> |
+	  <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+	<% end %>
   </div> 
 </div> 
 <div class='container'> 
   <div class='menu_container column last span-24'> 
 	<%= link_to 'Home', '/home/index', :class=>'menu_button' %>   	
 	<%= link_to 'Event Calendar', '/events/index', :class=>'menu_button' %> 
-	<%= link_to 'Tweets', '/tweets' , :class=>'menu_button'%>  
+	<%= link_to 'Announcements', '/tweets' , :class=>'menu_button'%>  
         <%= link_to 'Birthdays Calendar', '/birthdays', :class=>'menu_button' %>
   </div> 
 </div> 

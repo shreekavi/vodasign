@@ -1,3 +1,17 @@
+<%=flash[:success] %><br/>
+<%=flash[:error] %>
+
+<a href="#" onclick="Effect.toggle('import','blind')">Import Csv</a>
+
+
+<div style="display:none;" id="import">
+<%form_for(:record, :url =>{:action=>'import'},:html=>{:multipart => true} ) do %>
+<%=file_field 'document', 'file' %><br/>
+<br/>
+<%=submit_tag 'Import data',:disable_with => "Please wait..."%> 
+<%end%>
+
+</div>
 <h1>Birthdays Today</h1>
 
 <% @birthdays.each do |b| -%>
