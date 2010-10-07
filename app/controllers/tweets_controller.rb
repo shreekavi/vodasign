@@ -98,15 +98,15 @@ class TweetsController < ApplicationController
 	@message.created_by = 1
         @message.save
         render :juggernaut do |page|
-            #page.replace_html  'notice', " "
-            page.replace_html 'message_data', "<p class='message'><span class='date_stamp'>#{Time.now.strftime('%d %b %Y %H:%M:%S').to_s} </span><hr/>  #{h params[:message]}</p>"
+            page.replace_html 'message_data', "#{h params[:message]}</p>"
     	end
 	render :nothing => true
      end
   end
 
   ##Action to render the tweets on Signage
-  def render_action
+  def render_tweet
+  	@ip = VODASIGN_CONFIG['juggernaut_ip']
   end
 
 end

@@ -14,11 +14,12 @@
       </style>
 
       <%= javascript_include_tag :defaults, :juggernaut %>
-      <%= juggernaut  :debug=> false, :host=>'172.16.1.99' %>
+      <%= juggernaut  :debug=> false, :host=> @ip %>
     </head>
-    <body>
-    	
-      <ul id="message_data" style="list-style:none">
-      </ul>
+     <body>
+      <center> 	
+      	<div id="message_data" >
+      	</div>
+      </center>
     </body>
   </html>

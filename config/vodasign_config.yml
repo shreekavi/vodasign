@@ -1,0 +1,6 @@
+development: 
+  juggernaut_ip: 127.0.0.1
+production: 
+  juggernaut_ip: 127.0.0.1
+test: 
+  juggernaut_ip: 127.0.0.1
