@@ -4,7 +4,7 @@
 	<tr>
 	<% if @start_times.rindex {|e| e == @shift3[s]} -%>
 		<td width="50"><%= @shift3[s] %></td><td bgcolor='#8cc55a'> &nbsp;&nbsp;&nbsp;&nbsp;<font color="white"><%= @subjects[@start_times.rindex {|e| e == @shift3[s]}] %></font></td>
-	<% elsif @end_times.rindex {|e| e == @shift3[s+1]} %>
+	<% elsif @end_times.rindex {|e| e <= @shift3[s+1]} %>
 		<td  width="50"><%= @shift3[s] %></td><td bgcolor='#8cc55a'>&nbsp;</td>
 	<% else -%>
 		<td width="50"><%= @shift3[s] %></td><td>&nbsp;</td>

@@ -13,7 +13,6 @@ class EventsController < ApplicationController
 		#Read the request for a meeting room from URL
 	
 		@room_name = params[:id].upcase
-		#@room_name = "BOARD ROOM"
 
 	  	@shift1=["9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30"]
 
@@ -26,9 +25,9 @@ class EventsController < ApplicationController
 	  	
 	  	#Get the Shift Time
 	  	@current_time = Time.now.strftime("%H:%M")
-	
-		mail = params[:id] + '@shellnetworks.com'
-		#mail = "shree@shellnetworks.com"
+
+		mail = params[:id].to_s + '@' + VODASIGN_CONFIG['exchange_domain_name'].to_s
+
 		today = Time.now.strftime("%Y-%m-%d")
 		#today = "2010-09-28"
 		start_time = today +"T00:00:00"
@@ -107,7 +106,7 @@ doc = Nokogiri::XML <<-EOXML1
 EOXML1
 
 		puts doc
-		wsdl = `curl -v -u '#{params[:id]}':Shell123 -L "https://shell.shellnetworks.com/ews/exchange.asmx" -d '#{doc.to_xml}' -H "Content-Type:text/xml"`
+		wsdl = `curl -v -u '#{params[:id]}':'#{VODASIGN_CONFIG['mailbox_password']}' -L "https://#{VODASIGN_CONFIG['ews_end_point']}" -d '#{doc.to_xml}' -H "Content-Type:text/xml"`
 		response_xml = Nokogiri::XML(wsdl)
 		puts response_xml
 

@@ -2,17 +2,12 @@
     <head>
       <style>
         body{
-      		font-family : Arial;
+      		font-family : AlbanyMT;
       	}
-      	.date_stamp{
-      		font-size: 20px;
-      		font-weight: bold;
-      	}
-      	.message{
+      	#message_data{
       		font-size: 30px;
       	}
       </style>
-
       <%= javascript_include_tag :defaults, :juggernaut %>
       <%= juggernaut  :debug=> false, :host=> @ip %>
     </head>

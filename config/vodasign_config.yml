@@ -1,6 +1,15 @@
 development: 
   juggernaut_ip: 127.0.0.1
+  exchange_domain_name: example.com
+  ews_end_point: example.com/ews/exchange.asmx
+  mailbox_password: password
 production: 
   juggernaut_ip: 127.0.0.1
+  exchange_domain_name: example.com
+  ews_end_point: example.com/ews/exchange.asmx  
+  mailbox_password: password  
 test: 
   juggernaut_ip: 127.0.0.1
+  exchange_domain_name: example.com
+  ews_end_point: example.com/ews/exchange.asmx  
+  mailbox_password: password  

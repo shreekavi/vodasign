@@ -1,8 +1,7 @@
 <%=flash[:success] %><br/>
 <%=flash[:error] %>
 
-<a href="#" onclick="Effect.toggle('import','blind')">Import Csv</a>
-
+<a href="#" onclick="Effect.toggle('import','blind')">Import CSV with Birthdays</a>
 
 <div style="display:none;" id="import">
 <%form_for(:record, :url =>{:action=>'import'},:html=>{:multipart => true} ) do %>
@@ -13,11 +12,9 @@
 
 </div>
 <h1>Birthdays Today</h1>
-
+Today is <b><%= Time.now.strftime("%A,%dth %b") %></b><br />
 <% @birthdays.each do |b| -%>
     <%= b.name %><br />
-    <%= b.department %><br />
-	
 <% end -%>
 
 

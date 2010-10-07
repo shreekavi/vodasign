@@ -1,6 +1,16 @@
 class BirthdaysController < ApplicationController
+  layout 'application', :except=>['render_birthday']
   def index
-     @birthdays = Birthday.find(:all, :conditions => ["DAY(date_of_birth) = ? AND MONTH(date_of_birth) = ? ", Time.now.day, Time.now.month])
+	 @today = Time.now.strftime("%w")
+
+	 if @today == 4 
+	 	@birthdays = Birthday.find(:all, :conditions => ["DAY(date_of_birth) = ? AND MONTH(date_of_birth) = ? ", Time.now.day, Time.now.month])
+		@birthdays << Birthday.find(:all, :conditions => ["DAY(date_of_birth) = ? AND MONTH(date_of_birth) = ? ", Time.now.day + 1, Time.now.month])
+		@birthdays << Birthday.find(:all, :conditions => ["DAY(date_of_birth) = ? AND MONTH(date_of_birth) = ? ", Time.now.day + 2, Time.now.month])
+	 else
+	 	@birthdays = Birthday.find(:all, :conditions => ["DAY(date_of_birth) = ? AND MONTH(date_of_birth) = ? ", Time.now.day, Time.now.month])
+	 end
+     
   end
 
   def new
@@ -44,4 +54,22 @@ class BirthdaysController < ApplicationController
   flash[:success] << "Total Birthday Errors - #{total_birthdays_errors}"
   redirect_to :action=>'index'
 end
+	def render_birthday
+	@today = Time.now.strftime("%w")
+
+	 if @today == 4 
+	 	@birthdays = Birthday.find(:all, :conditions => ["DAY(date_of_birth) = ? AND MONTH(date_of_birth) = ? ", Time.now.day, Time.now.month])
+		@birthdays << Birthday.find(:all, :conditions => ["DAY(date_of_birth) = ? AND MONTH(date_of_birth) = ? ", Time.now.day + 1, Time.now.month])
+		@birthdays << Birthday.find(:all, :conditions => ["DAY(date_of_birth) = ? AND MONTH(date_of_birth) = ? ", Time.now.day + 2, Time.now.month])
+	 else
+	 	@birthdays = Birthday.find(:all, :conditions => ["DAY(date_of_birth) = ? AND MONTH(date_of_birth) = ? ", Time.now.day, Time.now.month])
+	 end
+	 
+	 @greeting="Happy Birthday "
+	 @birthdays.each do|b|
+	 	@greeting = @greeting + b.name + ", "
+	 	@greeting.chop.chop
+	 end
+     
+	end
 end
