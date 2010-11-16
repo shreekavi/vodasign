@@ -14,13 +14,16 @@ body { font-family: 'Albany MT'}
 	border-bottom: 1px solid #ccc;
 
 }
+.heading{
+  font-size: 12px;
+}
 
 </style>
 </head>
 <div class='container'>
 
 <div id = "calendar">
-	Meeting Room is :<%= @room_name %><br />
+	<span class="heading">Meeting Room is :<%= @room_name %></span><br />
 	<%= render :partial => "shift" , :current_shift=> @current_shift %>
 </div>
 
