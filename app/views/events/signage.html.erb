@@ -16,6 +16,9 @@ body { font-family: 'Albany MT'}
 }
 .heading{
   font-size: 12px;
+  font-weight: bold;
+  background-color: black;
+  color: white;
 }
 
 </style>
@@ -23,7 +26,7 @@ body { font-family: 'Albany MT'}
 <div class='container'>
 
 <div id = "calendar">
-	<span class="heading">Meeting Room is :<%= @room_name %></span><br />
+	<center><span class="heading"><%= @room_name %></span></center><br />
 	<%= render :partial => "shift" , :current_shift=> @current_shift %>
 </div>
 
