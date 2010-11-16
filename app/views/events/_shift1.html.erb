@@ -1,22 +1,22 @@
 <table width="98%" height="360" class="event_table">
 <% (0..@shift1.size-1).each do |s| %>
 	<tr >
-	<td width="50" style="border-right: 1px solid #CCC;" > 
+	<td width="50" style="border-right: 1px solid #CCC;" >
 		<% if s.even? %>
 			<%= @shift1[s] %>
 		<% else -%>
 			&nbsp;
-		<% end %>		
+		<% end %>
 	</td>
 	<% if @start_times.rindex {|e| e == @shift1[s]} -%>
 		<% @rowspan= (@shift1.index(@end_times[@start_times.rindex(@shift1[s])])) - @shift1.index(@start_times[@start_times.rindex(@shift1[s])]) %>
-			<% if @rowspan > 1 -%>	
+			<% if @rowspan > 1 -%>
 			<td bgcolor='#8cc55a' rowspan=<%= @rowspan %> style="border: 1px solid #fff;"> &nbsp;&nbsp;&nbsp;&nbsp;
-			<font color="white"><%= @subjects[@start_times.rindex {|e| e == @shift1[s]}] %></font>	</td>
+			<font color="white" size="10px"><%= @subjects[@start_times.rindex {|e| e == @shift1[s]}] %></font>	</td>
 			<% else -%>
 				<td>&nbsp;</td>
 			<% end -%>
-	
+
 	<% else -%>
 
 	<% end -%>
@@ -24,6 +24,4 @@
 	</tr>
 <% end -%>
 </table>
-
-
 
