@@ -1,14 +1,26 @@
-
-<table width="98%" height="360" border="0">
+<table width="98%" height="360" class="event_table">
 <% (0..@shift3.size-1).each do |s| %>
-	<tr>
+	<tr >
+	<td width="50" style="border-right: 1px solid #CCC;" > 
+		<% if s.even? %>
+			<%= @shift3[s] %>
+		<% else -%>
+			&nbsp;
+		<% end %>		
+	</td>
 	<% if @start_times.rindex {|e| e == @shift3[s]} -%>
-		<td width="50"><%= @shift3[s] %></td><td bgcolor='#8cc55a'> &nbsp;&nbsp;&nbsp;&nbsp;<font color="white"><%= @subjects[@start_times.rindex {|e| e == @shift3[s]}] %></font></td>
-	<% elsif @end_times.rindex {|e| e <= @shift3[s+1]} %>
-		<td  width="50"><%= @shift3[s] %></td><td bgcolor='#8cc55a'>&nbsp;</td>
+		<% @rowspan= (@shift3.index(@end_times[@start_times.rindex(@shift3[s])])) - @shift3.index(@start_times[@start_times.rindex(@shift3[s])]) %>
+			<% if @rowspan > 1 -%>	
+			<td bgcolor='#8cc55a' rowspan=<%= @rowspan %> style="border: 1px solid #fff;"> &nbsp;&nbsp;&nbsp;&nbsp;
+			<font color="white"><%= @subjects[@start_times.rindex {|e| e == @shift3[s]}] %></font>	</td>
+			<% else -%>
+				<td >&nbsp;</td>
+			<% end -%>
+	
 	<% else -%>
-		<td width="50"><%= @shift3[s] %></td><td>&nbsp;</td>
+
 	<% end -%>
+
 	</tr>
 <% end -%>
 </table>
