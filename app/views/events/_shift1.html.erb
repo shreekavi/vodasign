@@ -11,8 +11,8 @@
 	<% if @start_times.rindex {|e| e == @shift1[s]} -%>
 		<% @rowspan= (@shift1.index(@end_times[@start_times.rindex(@shift1[s])])) - @shift1.index(@start_times[@start_times.rindex(@shift1[s])]) %>
 			<% if @rowspan > 1 -%>
-			<td bgcolor='#8cc55a' rowspan=<%= @rowspan %> style="border: 1px solid #fff;"> &nbsp;&nbsp;&nbsp;&nbsp;
-			<font color="white" size="10px"><%= @subjects[@start_times.rindex {|e| e == @shift1[s]}] %></font>	</td>
+			<td bgcolor='#8cc55a' rowspan=<%= @rowspan %> style="border: 1px solid #fff; color: white; font-size: 10px;"> &nbsp;&nbsp;&nbsp;&nbsp;
+			<font color="white"><%= @subjects[@start_times.rindex {|e| e == @shift1[s]}] %></font>	</td>
 			<% else -%>
 				<td>&nbsp;</td>
 			<% end -%>
